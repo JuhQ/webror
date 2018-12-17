@@ -7,6 +7,11 @@
 <p>
   Count of beers: <%= @brewery.beers.count %>
 </p>
+
+<p>
+  <%= link_to 'list of beers', beers_path %>
+</p>
+
 <p>
  <% @brewery.beers.each do |beer| %>
    <%= link_to beer.name, beer %>
