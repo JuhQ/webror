@@ -11,4 +11,8 @@ class Brewery < ApplicationRecord
     self.year = 2018
     puts "changed year to #{year}"
   end
+
+  def to_s
+    "#{name}"
+  end
 end
