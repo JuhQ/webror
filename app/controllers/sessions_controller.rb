@@ -7,9 +7,12 @@ class SessionsController < ApplicationController
     # haetaan usernamea vastaava käyttäjä tietokannasta
     user = User.find_by username: params[:username]
     # talletetaan sessioon kirjautuneen käyttäjän id (jos käyttäjä on olemassa)
-    session[:user_id] = user.id if user
-    # uudelleen ohjataan käyttäjä omalle sivulleen
-    redirect_to user
+    if user.nil?
+      redirect_to signin_path, notice: "User #{params[:username]} does not exist!"
+    else
+      session[:user_id] = user.id
+      redirect_to user
+    end
   end
 
   def destroy
