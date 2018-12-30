@@ -6,4 +6,5 @@ class User < ApplicationRecord
                                  maximum: 30 }
 
   has_many :ratings # käyttäjällä on monta ratingia
+  has_many :beers, through: :ratings
 end
