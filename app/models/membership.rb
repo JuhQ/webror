@@ -1,4 +1,4 @@
 class Membership < ApplicationRecord
-  has_many :users
-  has_many :beerclubs
+  belongs_to :beerclub
+  belongs_to :user
 end

@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :ratings # käyttäjällä on monta ratingia
   has_many :beers, through: :ratings
   has_many :memberships
+  has_many :beerclubs, through: :memberships
 end

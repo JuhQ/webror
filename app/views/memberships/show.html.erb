@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Beer club:</strong>
-  <%= @membership.beer_club_id %>
+  <strong>Beerclub:</strong>
+  <%= @membership.beerclub.name %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @membership.user_id %>
+  <%= @membership.user.username %>
 </p>
 
 <%= link_to 'Edit', edit_membership_path(@membership) %> |

@@ -11,9 +11,17 @@
   <% end %>
 </p>
 
+<h2>Ratings</h2>
 <ul>
   <% @user.ratings.each do |rating| %>
     <li> <%= rating %> <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+  <% end %>
+</ul>
+
+<h2>Beerclub memberships</h2>
+<ul>
+  <% @user.beerclubs.each do |beerclub| %>
+    <li><%= link_to beerclub.name, beerclub %></li>
   <% end %>
 </ul>
 
