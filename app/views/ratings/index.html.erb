@@ -8,4 +8,6 @@
   <% end %>
 </ul>
 
-<%= link_to 'Create new rating', new_rating_path %>
+<% if current_user %>
+  <%= link_to 'Create new rating', new_rating_path %>
+<% end %>
