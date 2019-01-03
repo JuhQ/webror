@@ -16,7 +16,7 @@ class MembershipsController < ApplicationController
   # GET /memberships/new
   def new
     @membership = Membership.new
-    @beerclubs = Beerclub.all
+    @beerclubs = Beerclub.where.not(id: Membership.where(user_id: current_user.id).map(&:beerclub_id))
     @users = User.all
   end
 
