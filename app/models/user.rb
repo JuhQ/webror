@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   include RatingAverage
+
+  has_secure_password
+
   validates :username, uniqueness: true, length: { minimum: 3 }
 
   validates :username, length: { minimum: 3,
