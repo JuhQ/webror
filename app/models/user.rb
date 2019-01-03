@@ -12,9 +12,9 @@ class User < ApplicationRecord
 
   validate :validate_password
 
-  has_many :ratings # käyttäjällä on monta ratingia
+  has_many :ratings, dependent: :destroy # käyttäjällä on monta ratingia
   has_many :beers, through: :ratings
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :beerclubs, through: :memberships
 
   def validate_password
