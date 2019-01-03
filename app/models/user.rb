@@ -8,8 +8,17 @@ class User < ApplicationRecord
   validates :username, length: { minimum: 3,
                                  maximum: 30 }
 
+  validates :password, length: { minimum: 4 }
+
+  validate :validate_password
+
   has_many :ratings # käyttäjällä on monta ratingia
   has_many :beers, through: :ratings
   has_many :memberships
   has_many :beerclubs, through: :memberships
+
+  def validate_password
+    errors.add(:password, "needs to have at least one capital letter") unless password =~ /[A-Z]/
+    errors.add(:password, "needs to have at least one number") unless password =~ /[0-9]/
+  end
 end
