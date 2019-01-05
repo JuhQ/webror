@@ -5,11 +5,15 @@
   <%= @user.username %>
 </p>
 
-<p>
-  <% if !@user.ratings.empty? %>
-  Has made <%= pluralize(@user.ratings.count, 'rating', 'ratings') %>, average rating <%= @user.average_rating %>
-  <% end %>
-</p>
+<% if !@user.ratings.empty? %>
+  <p>
+    Has made <%= pluralize(@user.ratings.count, 'rating', 'ratings') %>, average rating <%= @user.average_rating %>
+  </p>
+
+  <p>
+    Favorite style: <%= @user.favorite_style %>
+  </p>
+<% end %>
 
 <h2>Ratings</h2>
 <ul>
