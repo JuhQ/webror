@@ -21,4 +21,10 @@ class User < ApplicationRecord
     errors.add(:password, "needs to have at least one capital letter") unless password =~ /[A-Z]/
     errors.add(:password, "needs to have at least one number") unless password =~ /[0-9]/
   end
+
+  def favorite_beer
+    return nil if ratings.empty?
+
+    ratings.order(score: :desc).limit(1).first.beer
+  end
 end
