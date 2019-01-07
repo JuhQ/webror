@@ -25,4 +25,20 @@ describe "Rating" do
     expect(beer1.ratings.count).to eq(1)
     expect(beer1.average_rating).to eq(15.0)
   end
+
+  it "should have no ratings" do
+    visit ratings_path
+    expect(page).to have_content 'Number of ratings: 0'
+  end
+
+  describe "With ratings" do
+    before :each do
+      create_beers_with_many_ratings(user, 1, 2, 3)
+    end
+
+    it "should have 3 ratings" do
+      visit ratings_path
+      expect(page).to have_content 'Number of ratings: 3'
+    end
+  end
 end

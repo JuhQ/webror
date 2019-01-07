@@ -54,9 +54,9 @@ RSpec.describe User, type: :model do
     end
 
     it "is the one with highest rating if several rated" do
-      create_beer_with_rating({ user: user }, 10 )
-      create_beer_with_rating({ user: user}, 7 )
-      best = create_beer_with_rating({ user: user }, 25 )
+      create_beer_with_rating(user, 10)
+      create_beer_with_rating(user, 7)
+      best = create_beer_with_rating(user, 25)
 
       expect(user.favorite_beer).to eq(best)
     end
@@ -98,8 +98,8 @@ RSpec.describe User, type: :model do
     end
 
     it "is the one with highest rating if several rated" do
-      create_beers_with_many_ratings({user: user}, 10, 20, 15, 7, 9)
-      best = create_beer_with_rating({ user: user }, 25 )
+      create_beers_with_many_ratings(user, 10, 20, 15, 7, 9)
+      best = create_beer_with_rating(user, 25)
 
       expect(user.favorite_beer).to eq(best)
     end
@@ -124,8 +124,8 @@ RSpec.describe User, type: :model do
     end
 
     it "is the one with highest rating if several rated" do
-      create_beers_with_many_ratings({user: user}, 10, 20, 15, 7, 9)
-      best = create_beer_with_rating({ user: user }, 25 )
+      create_beers_with_many_ratings(user, 10, 20, 15, 7, 9)
+      best = create_beer_with_rating(user, 25)
 
       expect(user.favorite_style).to eq(best.style)
     end
@@ -150,8 +150,8 @@ RSpec.describe User, type: :model do
     end
 
     it "is the one with highest rating if several rated" do
-      create_beers_with_many_ratings({user: user}, 10, 20, 15, 7, 9)
-      best = create_beer_with_rating({ user: user }, 25 )
+      create_beers_with_many_ratings(user, 10, 20, 15, 7, 9)
+      best = create_beer_with_rating(user, 25)
 
       expect(user.favorite_brewery).to eq(best.brewery)
     end
