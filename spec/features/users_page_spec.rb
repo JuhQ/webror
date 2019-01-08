@@ -33,4 +33,17 @@ describe "User" do
       click_button('Create User')
     }.to change{User.count}.by(1)
   end
+
+  describe "Ratings" do
+    let!(:user) { FactoryBot.create :user, { username: 'Timppa' } }
+
+    before :each do
+      create_beers_with_many_ratings(user, 1, 2, 3)
+    end
+
+    it "has ratings on their page" do
+      visit user_path(user)
+      expect(page).to have_content 'Has made 3 ratings, average rating 2.0'
+    end
+  end
 end
