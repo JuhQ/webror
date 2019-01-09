@@ -35,15 +35,23 @@ describe "User" do
   end
 
   describe "Ratings" do
-    let!(:user) { FactoryBot.create :user, { username: 'Timppa' } }
+    let!(:user) { FactoryBot.create :user, { username: 'Timppa', password: 'Password1', password_confirmation: 'Password1' } }
 
     before :each do
+      sign_in(username: "Timppa", password: "Password1")
       create_beers_with_many_ratings(user, 1, 2, 3)
     end
 
     it "has ratings on their page" do
       visit user_path(user)
       expect(page).to have_content 'Has made 3 ratings, average rating 2.0'
+    end
+
+    it "can remove rating from their page" do
+      visit user_path(user)
+
+      find(:xpath, "(//a[text()='delete'])[1]").click
+      expect(page).to have_content 'Has made 2 ratings, average rating 2.5'
     end
   end
 end
