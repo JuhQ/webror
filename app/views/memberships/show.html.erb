@@ -10,5 +10,5 @@
   <%= @membership.user.username %>
 </p>
 
-<%= link_to 'Edit', edit_membership_path(@membership) %> |
+<%= link_to('Edit', edit_membership_path(@membership)) if current_user %> |
 <%= link_to 'Back', memberships_path %>
