@@ -53,5 +53,15 @@ describe "User" do
       find(:xpath, "(//a[text()='delete'])[1]").click
       expect(page).to have_content 'Has made 2 ratings, average rating 2.5'
     end
+
+    it "has favorite style of beer based on given ratings" do
+      visit user_path(user)
+      expect(page).to have_content 'Favorite style: Lager'
+    end
+
+    it "has favorite brewery based on given ratings" do
+      visit user_path(user)
+      expect(page).to have_content 'Favorite brewery: anonymous'
+    end
   end
 end
