@@ -13,5 +13,6 @@
   <% end %>
 </ul>
 
+<%= link_to('Destroy', @beerclub, method: :delete, data: { confirm: 'Are you sure?' }) if current_user %> |
 <%= link_to('Edit', edit_beerclub_path(@beerclub)) if current_user %> |
 <%= link_to 'Back', beerclubs_path %>

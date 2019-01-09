@@ -168,9 +168,13 @@
         1,
         null,
         1,
-        232,
+        255,
         null,
-        177,
+        184,
+        null,
+        null,
+        1,
+        4,
         null,
         null
       ],
@@ -279,6 +283,7 @@
         null
       ],
       "/Users/juhatauriainen/Sites/misc/university-repositories/webror/ratebeer/app/controllers/beers_controller.rb": [
+        1,
         1,
         1,
         1,
@@ -438,14 +443,6 @@
         1,
         0,
         null,
-        null,
-        1,
-        0,
-        null,
-        0,
-        0,
-        null,
-        null,
         null
       ],
       "/Users/juhatauriainen/Sites/misc/university-repositories/webror/ratebeer/app/controllers/ratings_controller.rb": [
@@ -492,6 +489,7 @@
         0
       ],
       "/Users/juhatauriainen/Sites/misc/university-repositories/webror/ratebeer/app/controllers/beerclubs_controller.rb": [
+        0,
         0,
         0,
         null,
@@ -569,6 +567,7 @@
         0
       ],
       "/Users/juhatauriainen/Sites/misc/university-repositories/webror/ratebeer/app/controllers/memberships_controller.rb": [
+        0,
         0,
         0,
         null,
@@ -660,6 +659,6 @@
         0
       ]
     },
-    "timestamp": 1547046249
+    "timestamp": 1547061373
   }
 }
