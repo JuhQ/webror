@@ -448,29 +448,29 @@
       "/Users/juhatauriainen/Sites/misc/university-repositories/webror/ratebeer/lib/beermapping_api.rb": [
         1,
         1,
-        3,
+        6,
+        11,
+        null,
+        null,
+        1,
         5,
         null,
+        5,
         null,
-        1,
-        2,
+        5,
         null,
-        2,
+        4,
         null,
-        2,
+        4,
         null,
-        2,
-        null,
-        2,
-        null,
-        2,
-        2,
-        6,
+        4,
+        4,
+        8,
         null,
         null,
         null,
         1,
-        2,
+        5,
         null,
         null
       ],
@@ -710,6 +710,6 @@
         0
       ]
     },
-    "timestamp": 1547126546
+    "timestamp": 1547126657
   }
 }
