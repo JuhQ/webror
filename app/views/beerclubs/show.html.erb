@@ -7,15 +7,18 @@
   <%= @beerclub.founded %>
 </p>
 
+<h2>Members</h2>
 <ul>
   <% @beerclub.members.each do |member| %>
     <li><%= link_to member.username, member %></li>
   <% end %>
 </ul>
 
-<%= form_for(@membership) do |f| %>
-  <%= f.hidden_field :beerclub_id %>
-  <%= f.submit value:"join the club" %>
+<% if current_user && @current_user_is_member %>
+  <%= form_for(@membership) do |f| %>
+    <%= f.hidden_field :beerclub_id %>
+    <%= f.submit value:"join the club" %>
+  <% end %>
 <% end %>
 
 <%= link_to('Destroy', @beerclub, method: :delete, data: { confirm: 'Are you sure?' }) if current_user %> |

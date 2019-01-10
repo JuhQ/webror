@@ -13,6 +13,7 @@ class BeerclubsController < ApplicationController
   def show
     @membership = Membership.new
     @membership.beerclub = @beerclub
+    @current_user_is_member = Membership.where(beerclub_id: @beerclub.id, user_id: current_user).empty?
   end
 
   # GET /beerclubs/new
