@@ -95,3 +95,7 @@ end
 gem 'simplecov', require: false
 
 gem 'httparty'
+
+group :test do
+  gem 'webmock'
+end
