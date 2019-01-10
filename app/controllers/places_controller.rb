@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = session["places-#{params[:id]}"]
+    @place = BeermappingApi.place(params[:id])
   end
 
   def search
