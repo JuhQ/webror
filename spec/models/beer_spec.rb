@@ -8,9 +8,9 @@ RSpec.describe Beer, type: :model do
   end
 
   it "has the style set correctly" do
-    beer = Beer.new style:"Lager"
+    beer = Beer.new style: Style.new(name: "Lager")
 
-    expect(beer.style).to eq("Lager")
+    expect(beer.style.name).to eq("Lager")
   end
 
   it "has the brewery id set correctly" do
@@ -21,7 +21,7 @@ RSpec.describe Beer, type: :model do
 
   describe "with proper data" do
     let(:test_brewery) { Brewery.new name: "test", year: 2000 }
-    let(:beer) { Beer.create name: "testbeer", style: "teststyle", brewery: test_brewery }
+    let(:beer) { Beer.create name: "testbeer", style: Style.new(name: "Lager"), brewery: test_brewery }
 
     it "is saved" do
       expect(beer).to be_valid
@@ -31,7 +31,7 @@ RSpec.describe Beer, type: :model do
 
   describe "with improper data" do
     it "is not saved if no name" do
-      beer = Beer.new style:"Lager"
+      beer = Beer.new style: Style.new(name: "Lager")
       expect(beer).not_to be_valid
       expect(Beer.count).to eq(0)
     end

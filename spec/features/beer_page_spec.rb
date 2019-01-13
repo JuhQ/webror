@@ -3,6 +3,7 @@ require 'rails_helper'
 include Helpers
 
 describe "Beer" do
+  let!(:style) { FactoryBot.create :style, name:"Weizen" }
   let!(:brewery) { FactoryBot.create :brewery, name:"Koff" }
   let!(:user) { FactoryBot.create :user }
 
@@ -12,7 +13,7 @@ describe "Beer" do
 
   it "can add a beer when name is given" do
     visit new_beer_path
-    select('Weizen', from:'beer[style]')
+    select('Weizen', from:'beer[style_id]')
     select('Koff', from:'beer[brewery_id]')
     fill_in('beer[name]', with:'olut')
 
@@ -25,7 +26,7 @@ describe "Beer" do
 
   it "should not add beer when no name is given" do
     visit new_beer_path
-    select('Weizen', from:'beer[style]')
+    select('Weizen', from:'beer[style_id]')
     select('Koff', from:'beer[brewery_id]')
 
     click_button "Create Beer"
