@@ -1,10 +1,8 @@
 <h1><%= @style.name %></h1>
 
-<p>
+<quote>
   <%= @style.description %>
-</p>
-
-
+</quote>
 
 <h2>Beers</h2>
 <ul>
@@ -13,6 +11,4 @@
   <% end %>
 </ul>
 
-
-<%= link_to 'Edit', edit_style_path(@style) %> |
-<%= link_to 'Back', styles_path %>
+<%= edit_and_destroy_buttons(@style) %>
