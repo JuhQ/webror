@@ -99,3 +99,7 @@ gem 'httparty'
 group :test do
   gem 'webmock'
 end
+
+
+gem 'bootstrap', '~> 4.1.3'
+gem 'jquery-rails', '>= 4.3.3'
