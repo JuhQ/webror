@@ -12,7 +12,8 @@ class Brewery < ApplicationRecord
   validate :validate_year
 
   scope :active, -> { where active: true }
-  scope :retired, -> { where active: [nil,false] }
+  scope :retired, -> { where active: [nil, false] }
+  scope :top, -> { sort_by{ |b| -(b.average_rating || 0) }.take(3) }
 
   def validate_year
     errors.add(:year, "can't be larger than current year") if Time.now.year < year

@@ -2,6 +2,21 @@
 
 <p> Number of ratings: <%= @ratings.count %> </p>
 
+<h2>top</h2>
+<ul>
+  <% @top.each do |rating| %>
+    <li> <%= link_to rating.name, rating %> </li>
+  <% end %>
+</ul>
+
+<h2>recent</h2>
+<ul>
+  <% @recent.each do |rating| %>
+    <li> <%= rating %> <%= link_to rating.user.username, rating.user %> </li>
+  <% end %>
+</ul>
+
+<h2>all</h2>
 <ul>
   <% @ratings.each do |rating| %>
     <li> <%= rating %> <%= link_to rating.user.username, rating.user %> </li>
