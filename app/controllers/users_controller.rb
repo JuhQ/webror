@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :close, :unclose]
+  before_action :ensure_that_admin, only: [:close, :unclose]
 
   # GET /users
   # GET /users.json
@@ -19,6 +20,26 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def toggle_closed(closed, notice)
+    respond_to do |format|
+      if @user.update_attribute(:closed, closed)
+        format.html { redirect_to @user, notice: notice }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def close
+    toggle_closed(true, 'Account was successfully closed.')
+  end
+
+  def unclose
+    toggle_closed(false, 'Account was successfully reopened.')
   end
 
   # POST /users

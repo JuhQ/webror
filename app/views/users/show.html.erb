@@ -37,6 +37,20 @@
   <% end %>
 </ul>
 
+
+<% if current_user %>
+  <% if current_user.admin %>
+    <% unless @user.closed %>
+      <%= link_to 'Close account', close_user_path(@user), data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    <% end %>
+
+    <% if @user.closed %>
+      <%= link_to 'Reopen account', unclose_user_path(@user), data: { confirm: 'Are you sure?' }, class: 'btn btn-info' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
 <%= link_to 'Back', users_path %>
 
 <% if @user == current_user %>
