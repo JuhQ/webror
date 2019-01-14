@@ -1,7 +1,11 @@
-<p>
-  <strong>Username:</strong>
+<h1>
   <%= @user.username %>
-</p>
+  <% if current_user && current_user.admin %>
+    <% if @user.closed %>
+      <span class="badge badge-info">account closed</span>
+    <% end %>
+  <% end %>
+</h1>
 
 <% if !@user.ratings.empty? %>
   <p>
