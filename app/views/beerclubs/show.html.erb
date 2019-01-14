@@ -26,6 +26,6 @@
   <% end %>
 <% end %>
 
-<%= link_to('Destroy', @beerclub, method: :delete, data: { confirm: 'Are you sure?' }) if current_user %> |
-<%= link_to('Edit', edit_beerclub_path(@beerclub)) if current_user %> |
-<%= link_to 'Back', beerclubs_path %>
+<%= link_to('Destroy', @beerclub, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }) if current_user %> |
+<%= link_to('Edit', edit_beerclub_path(@beerclub), class:'btn btn-primary') if current_user %> |
+<%= link_to 'Back', beerclubs_path, class:'btn btn-primary' %>
