@@ -1,18 +1,23 @@
 class BeersController < ApplicationController
+  before_action :expire_fragment_cache, only: [:create, :update, :destroy]
   before_action :set_beer, only: [:show, :edit, :update, :destroy]
   before_action :set_breweries_and_styles_for_template, only: [:new, :edit]
   before_action :ensure_that_signed_in, except: [:index, :show, :list]
   before_action :ensure_that_admin, only: [:destroy]
 
+  def expire_fragment_cache
+    ["beerlist-name", "beerlist-brewery", "beerlist-style"].each{ |f| expire_fragment(f) }
+  end
+
   # GET /beers
   # GET /beers.json
   def index
+    @order = params[:order] || 'name'
+    return if request.format.html? && fragment_exist?("beerlist-#{@order}")
+
     @beers = Beer.includes(:brewery, :style).all
-
-    order = params[:order] || 'name'
-
-    @beers = case order
-             when 'name' then @beers.sort_by{ |b| b.name }
+    @beers = case @order
+             when 'name' then @beers.sort_by(&:name)
              when 'brewery' then @beers.sort_by{ |b| b.brewery.name }
              when 'style' then @beers.sort_by{ |b| b.style.name }
              end
