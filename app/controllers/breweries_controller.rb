@@ -1,23 +1,29 @@
 class BreweriesController < ApplicationController
+  before_action :expire_fragment_cache, only: [:create, :update, :destroy]
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_admin, only: [:destroy]
   before_action :ensure_that_signed_in, except: [:index, :show]
 
+  def expire_fragment_cache
+    ["brewerylist-name", "brewerylist-year"].each{ |f| expire_fragment(f) }
+  end
+
   # GET /breweries
   # GET /breweries.json
   def index
+    @order = params[:order] || 'name'
+    return if request.format.html? && fragment_exist?("brewerylist-#{@order}")
+
     @breweries = Brewery.all
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
 
-    order = params[:order] || 'name'
-
-    @active_breweries = case order
+    @active_breweries = case @order
                         when 'name' then @active_breweries.sort_by{ |b| b.name }
                         when 'year' then @active_breweries.sort_by{ |b| b.year }
                         end
 
-    @retired_breweries = case order
+    @retired_breweries = case @order
                          when 'name' then @retired_breweries.sort_by{ |b| b.name }
                          when 'year' then @retired_breweries.sort_by{ |b| b.year }
                          end
