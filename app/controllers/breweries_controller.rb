@@ -6,6 +6,7 @@ class BreweriesController < ApplicationController
   # GET /breweries
   # GET /breweries.json
   def index
+    @breweries = Brewery.all
     @active_breweries = Brewery.active
     @retired_breweries = Brewery.retired
 
@@ -20,6 +21,9 @@ class BreweriesController < ApplicationController
                          when 'name' then @retired_breweries.sort_by{ |b| b.name }
                          when 'year' then @retired_breweries.sort_by{ |b| b.year }
                          end
+  end
+
+  def list
   end
 
   # GET /breweries/1
