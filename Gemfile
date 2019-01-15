@@ -105,3 +105,5 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails', '>= 4.3.3'
 
 gem 'rack-mini-profiler'
+
+gem 'sucker_punch', '~> 2.0'
