@@ -32,4 +32,7 @@ Rails.application.routes.draw do
 
   get 'places', to: 'places#index'
   post 'places', to:'places#search'
+
+  get 'beerlist', to:'beers#list'
+
 end
