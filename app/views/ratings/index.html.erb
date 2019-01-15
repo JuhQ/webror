@@ -3,12 +3,12 @@
 <% cache 'ratings', expires_in:10.minutes do %>
   <p> Number of ratings: <%= @ratings.count %> </p>
 
-  <h2>top</h2>
-  <ul>
-    <% @top.each do |rating| %>
-      <li><%= link_to rating.name, rating %></li>
-    <% end %>
-  </ul>
+  <h2>top breweries</h2>
+  <%= render 'list', ratings: @top_breweries %>
+
+  <h2>top beers</h2>
+
+  <%= render 'list', ratings: @top_beers %>
 
   <h2>recent</h2>
   <ul>

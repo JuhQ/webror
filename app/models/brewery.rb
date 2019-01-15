@@ -13,7 +13,6 @@ class Brewery < ApplicationRecord
 
   scope :active, -> { where active: true }
   scope :retired, -> { where active: [nil, false] }
-  scope :top, -> { sort_by{ |b| -(b.average_rating || 0) }.take(3) }
 
   def validate_year
     errors.add(:year, "can't be larger than current year") if Time.now.year < year
@@ -32,5 +31,10 @@ class Brewery < ApplicationRecord
 
   def to_s
     name
+  end
+
+  def self.top(how_many)
+    sorted_by_rating_in_desc_order = all.sort_by{ |b| -(b.average_rating || 0) }
+    sorted_by_rating_in_desc_order[0, how_many]
   end
 end
